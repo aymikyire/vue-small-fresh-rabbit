@@ -1,13 +1,15 @@
-<script setup lang="ts">
-import {useCategoryStore} from "@/stores/layout"
-import {onMounted} from "vue"
+<script setup>
+import { ref, onMounted } from "vue"
+import { getCategoryAPI } from "@/apis/layout"
 
-const store=useCategoryStore()
-onMounted(async () => {
-   await store.getCategory()
-   console.log(store.categoryList)
+const categoryList = ref([])
+const getCategory = async () => {
+  const res = await getCategoryAPI()
+  categoryList.value = res.result
+}
+onMounted(() => {
+  getCategory()
 })
-
 </script>
 
 <template>
@@ -17,15 +19,15 @@ onMounted(async () => {
         <RouterLink to="/">小兔鲜</RouterLink>
       </h1>
       <ul class="app-header-nav">
-        <li class="home">
-          <RouterLink to="/">首页</RouterLink>
+        <li class="home" v-for="item in categoryList" :key="item.id">
+          <RouterLink to="/">{{ item.name }}</RouterLink>
         </li>
-        <li v-for="item in store.categoryList?.result" :key="item.id">
+        <!-- <li v-for="item in categoryList" :key="item.id">
           <RouterLink active-class="active" :to="`/category/${item.id}`">{{ item.name }}</RouterLink>
-        </li>
+        </li> -->
       </ul>
       <div class="search">
-        <i class="iconfont icon-search"></i>
+        <i class="iconfont icon-souyisou"></i>
         <input type="text" placeholder="搜一搜">
       </div>
       <!-- 头部购物车 -->
