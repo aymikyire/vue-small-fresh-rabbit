@@ -9,7 +9,14 @@ import { RouterView } from 'vue-router';
   
     <!--一级路由出口组件-->
   <RouterView/>
+  <div class="test">
+     test scss
+  </div>
   
 </template>
 
-<style scoped></style>
+<style scoped lang="scss">
+  .test{
+    color: $priceColor;
+  }
+</style>
