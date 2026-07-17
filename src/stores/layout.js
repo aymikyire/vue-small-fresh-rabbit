@@ -3,11 +3,11 @@ import { ref } from "vue";
 import { getCategoryAPI } from "@/apis/layout";
 
 export const useCategoryStore = defineStore("category", () => {
-  const categoryList = ref({});
+  const categoryList = ref([]);
 
   const getCategory = async () => {
     const res = await getCategoryAPI();
-    categoryList.value = res;
+    categoryList.value = res.result;
   };
 
   return {
