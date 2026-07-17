@@ -18,7 +18,7 @@ import { getCategoryAPI } from "@/apis/layout"
 // -----------------------------------------------------------
 // useCounterStore 是这个 Store 的"钩子函数"（useXxxStore 是 Pinia 的命名惯例）
 // 组件里通过 const store = useCounterStore() 就能拿到这个仓库
-export const useCounterStore = defineStore('category', () => {
+export const useCategoryStore = defineStore('category', () => {
 
   // ===================== State（状态/数据） =====================
   // ref([])：创建一个响应式的空数组
