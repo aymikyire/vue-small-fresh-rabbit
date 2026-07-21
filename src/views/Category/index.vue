@@ -44,6 +44,26 @@ onMounted(()=>getBanner())
       </el-carousel-item>
     </el-carousel>
   </div>
+  <div class="sub-list">
+        <h3>全部分类</h3>
+        <ul>
+          <li v-for="i in categoryData.children" :key="i.id">
+            <RouterLink :to="`/category/sub/${i.id}`"> <!-- 点击跳转到二级路由页面 -->
+              <img :src="i.picture" />
+              <p>{{ i.name }}</p>
+            </RouterLink>
+          </li>
+        </ul>
+      </div>
+      <div class="ref-goods" v-for="item in categoryData.children" :key="item.id">
+        <div class="head">
+          <h3>- {{ item.name }}-</h3>
+        </div>
+        <div class="body">
+          <GoodsItem v-for="good in item.goods" :goods="good" :key="good.id" />
+        </div>
+      </div>
+    
     </div>
   </div>
 </template>
