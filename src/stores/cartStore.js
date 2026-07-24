@@ -2,12 +2,22 @@
 
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
-
+import { useUserStore } from './user'
+import {insertCartAPI, findNewCartListAPI} from '@/apis/cart'
 export const useCartStore = defineStore('cart', () => {
+    const userStore = useUserStore()
+    const isLogin = computed(() => userStore.userInfo.token)
     //1.定义state = carList
     const cartList = ref([])
     //2.定义action - addCart
-    const addCart = (goods) => {
+    const addCart = async (goods) => {
+        const {skuId, count} = goods
+        if(isLogin){
+            //登录之后的加入购物车逻辑
+            await insertCartAPI({skuId, count})
+            const res = await findNewCartListAPI()
+            cartList.value = res.result
+        }else{
         //添加购物车操作
         //已添加过 - Count + 1
         //没有添加过 - 直接push
@@ -20,6 +30,8 @@ export const useCartStore = defineStore('cart', () => {
             //没找到，默认选中
             cartList.value.push({ ...goods, selected: true })
         }
+        }
+        
     }
 
     // 删除购物车
