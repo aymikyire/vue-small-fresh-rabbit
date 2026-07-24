@@ -10,6 +10,9 @@ const singleCheck = (i, selected) => {
     carStore.singleCheck(i.skuId,selected)
 }
 const carStore = useCartStore()
+const allCheck = (selected) => {
+    carStore.allCheck(selected)
+}
 </script>
 
 <template>
@@ -20,7 +23,7 @@ const carStore = useCartStore()
           <thead>
             <tr>
               <th width="120">
-                <el-checkbox/>
+                <el-checkbox :model-value="carStore.isAll" @change="allCheck"/>
               </th>
               <th width="400">商品信息</th>
               <th width="220">单价</th>
@@ -35,7 +38,7 @@ const carStore = useCartStore()
               <td>
                 <!-- 单选框 -->
                 <el-checkbox :model-value="i.selected" @change="(selected) => singleCheck(i, selected)"/>
-              </td>
+            </td>
               <td>
                 <div class="goods">
                   <RouterLink to="/"><img :src="i.pictures" alt="" /></RouterLink>
