@@ -2,6 +2,13 @@
 import {ref} from 'vue'
 import { useCartStore } from '@/stores/cartStore'; 
 
+//单选回调
+const singleCheck = (i, selected) => {
+    console.log(i, selected)
+    // store carList 数组  无法知道要修改谁的选中状态
+    //除了selected补充一个用来筛选的参数 - skuId
+    carStore.singleCheck(i.skuId,selected)
+}
 const carStore = useCartStore()
 </script>
 
@@ -26,11 +33,12 @@ const carStore = useCartStore()
           <tbody>
             <tr v-for="i in carStore.cartList" :key="i.id">
               <td>
-                <el-checkbox />
+                <!-- 单选框 -->
+                <el-checkbox :model-value="i.selected" @change="(selected) => singleCheck(i, selected)"/>
               </td>
               <td>
                 <div class="goods">
-                  <RouterLink to="/"><img :src="i.picture" alt="" /></RouterLink>
+                  <RouterLink to="/"><img :src="i.pictures" alt="" /></RouterLink>
                   <div>
                     <p class="name ellipsis">
                       {{ i.name }}

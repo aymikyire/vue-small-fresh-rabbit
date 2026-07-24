@@ -37,7 +37,7 @@ const addCart = () => {
     ElMessage.success('添加购物车成功')
     carStore.addCart({
       id:goods.value.id,
-      name:goods.value.namem,
+      name:goods.value.name,
       pictures:goods.value.mainPictures[0],
       price:goods.value.price,
       count:count.value,
