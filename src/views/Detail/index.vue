@@ -34,6 +34,7 @@ const countChange = (count) => {
 const addCart = () => {
   if (skuObj.skuId){
     //规格已经选择 触发action
+    ElMessage.success('添加购物车成功')
     carStore.addCart({
       id:goods.value.id,
       name:goods.value.namem,
