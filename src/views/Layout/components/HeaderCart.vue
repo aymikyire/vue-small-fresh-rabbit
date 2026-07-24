@@ -5,7 +5,7 @@ const cartStore = useCartStore()
 </script>
 
 <template>
-    <link rel="stylesheet" href="//at.alicdn.com/t/c/font_5211632_e3ey2zq7q78.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/c/font_5211632_5q0ftao560q.css">
   <div class="cart">
     <a class="curr" href="javascript:;">
       <i class="iconfont icon-gouwuchekong"></i><em>{{ cartStore.cartList.length }}</em>
@@ -27,7 +27,7 @@ const cartStore = useCartStore()
               <p class="count">x{{ i.count }}</p>
             </div>
           </RouterLink>
-          <i class="iconfont icon-close-new" @click="cartStore.delCart(i.skuId)"></i>
+          <i class="iconfont icon-cuowu" @click="cartStore.delCart(i.skuId)"></i>
         </div>
        
       </div>
