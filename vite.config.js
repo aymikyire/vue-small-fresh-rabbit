@@ -25,6 +25,11 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
+  server: {
+    watch: {
+      usePolling: true,
+    },
+  },
   css: {
     preprocessorOptions: {
       scss: {
