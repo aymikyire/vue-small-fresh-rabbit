@@ -22,6 +22,7 @@ export const useUserStore = defineStore('user', () => {
                 count: item.count
             }
         }))
+        
         cartStore.updateNewList()
     }
 

@@ -41,9 +41,9 @@ const allCheck = (selected) => {
             </td>
               <td>
                 <div class="goods">
-                  <RouterLink to="/"><img :src="i.pictures" alt="" /></RouterLink>
+                  <RouterLink to="/"><img :src="i.picture" alt="" /></RouterLink>
                   <div>
-                    <p class="name ellipsis">
+                    <p class="name ellipsis">22
                       {{ i.name }}
                     </p>
                   </div>

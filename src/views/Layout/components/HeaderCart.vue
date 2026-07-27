@@ -1,7 +1,10 @@
 <script setup>
+
+
 import { useCartStore } from '@/stores/cartStore';
 
 const cartStore = useCartStore()
+console.log(cartStore.cartList);
 </script>
 
 <template>
@@ -15,7 +18,7 @@ const cartStore = useCartStore()
         
         <div class="item" v-for="i in cartStore.cartList" :key="i">
           <RouterLink to="">
-            <img :src="i.pictures" alt="" />
+            <img :src="i.picture" alt="" />
             <div class="center">
               <p class="name ellipsis-2">
                 {{ i.name }}
