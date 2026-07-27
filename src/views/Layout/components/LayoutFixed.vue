@@ -1,7 +1,7 @@
 <script setup>
 // vueUse
 import { useScroll } from '@vueuse/core'
-import { useCategoryStore } from '@/stores/layout'
+import { useCategoryStore } from '@/stores/layoutStore'
 
 const categoryStore = useCategoryStore()
 
