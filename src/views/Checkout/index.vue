@@ -1,7 +1,12 @@
 <script setup>
 import {ref,onMounted} from 'vue'
-import {getCheckInfoAPI} from '@/apis/checkout'
+import { useRouter } from 'vue-router'
+import {getCheckInfoAPI,createOrderAPI} from '@/apis/checkout'
+import { ElMessage } from 'element-plus'
+import { useCartStore } from '@/stores/cartStore'
 
+const cartStore = useCartStore()
+const router = useRouter()
 const checkInfo = ref({})  // 订单对象
 const curAddress = ref()
 const getCheckInfo = async () => {
@@ -27,6 +32,36 @@ const confirm = () => {
   activeAddress.value = {}
 }
 onMounted(() => getCheckInfo())
+
+//创建订单
+const createOrder = async () => {
+  if(!curAddress.value){
+    ElMessage.warning('请选择收货地址')
+    return
+  }
+  const res = await createOrderAPI({
+    deliveryTimeType:1,
+    payType:1,
+    payChannel:1,
+    buyerMessage:'',
+    goods:checkInfo.value.goods.map(item =>{
+      return {
+        skuId:item.skuId,
+        count: item.count
+      }
+    }),
+    addressId:curAddress.value.id
+  })
+  const orderId = res.result.id
+  router.push({
+    path:'/pay',
+    query:{
+      id:orderId
+    }
+  })
+  //更新购物车
+  cartStore.updateNewList()
+}
 </script>
 
 <template>
@@ -54,7 +89,7 @@ onMounted(() => getCheckInfo())
         <!-- 商品信息 -->
         <h3 class="box-title">商品信息</h3>
         <div class="box-body">
-          <table class="goods">3
+          <table class="goods">
             <thead>
               <tr>
                 <th width="520">商品信息</th>
@@ -121,7 +156,7 @@ onMounted(() => getCheckInfo())
         </div>
         <!-- 提交订单 -->
         <div class="submit">
-          <el-button type="primary" size="large" >提交订单</el-button>
+          <el-button @click="createOrder" type="primary" size="large" >提交订单</el-button>
         </div>
       </div>
     </div>
