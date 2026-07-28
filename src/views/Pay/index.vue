@@ -14,7 +14,7 @@ const getPayInfo = async () => {
     payInfo.value = res.result
     //初始化倒计时秒数
     start(res.result.useCountDown || 60)
-    console.log("1111111111"+res.result.useCountDown);
+    // console.log("1111111111"+res.result.useCountDown);
     
 }
 onMounted(() => getPayInfo())
