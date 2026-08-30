@@ -6,8 +6,8 @@ import Sku from './XtxSku/index.vue'
 export const componentPlugin = {
     install(app){
         //app.component('组件的名字',组件配置对象)
-        app.component('XtuImageView',ImageView)
-        app.component('XtuSku',Sku)
+        app.component('XtxImageView',ImageView)
+        app.component('XtxSku',Sku)
 
     }
 }

@@ -15,12 +15,12 @@ export const useCountDown = () => {
     let timer = null
     // TODO ①: 创建一个 ref 用来存放倒计时的秒数，初始值为 0
     // 【答案示例】const time = ref(0)
-    const time = undefined // 请实现：替换为 ref(0)
+    const time = ref(0) // 请实现：替换为 ref(0)
 
     // TODO ②: 创建计算属性 formatTime，把 time 格式化为 "xx分xx秒"
     // 【思路】使用 dayjs.unix(秒数).format('mm分ss秒')
     // 【答案示例】const formatTime = computed(() => dayjs.unix(time.value).format('mm分ss秒'))
-    const formatTime = undefined // 请实现：替换为 computed(...)
+    const formatTime = computed(() => dayjs.unix(time.value).format('mm分ss秒')) // 请实现：替换为 computed(...)
 
     //2.开启倒计时的函数
     const start = (currentTime) => {
@@ -35,6 +35,10 @@ export const useCountDown = () => {
         //   timer = setInterval(() => { time.value-- }, 1000)
         // ============================================================
         /* 请实现：设置初始值 + 开启定时器 */
+        time.value = currentTime;
+        timer = setInterval(() => {
+            time.value--;
+        }, 1000)
     }
 
     //组件销毁时清除定时器（防止内存泄漏）
@@ -45,6 +49,9 @@ export const useCountDown = () => {
     // ============================================================
     onUnmounted(() => {
         /* 请实现：清除定时器（提示：clearInterval） */
+        if(timer){
+            clearInterval(timer);
+        }
     })
 
     return {

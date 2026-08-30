@@ -66,7 +66,21 @@ const positionY = ref(0)
 //       positionY.value = -top.value * 2
 //   })
 // ============================================================
-watch(/* 请实现：监听 elementX 和 elementY */)
+watch([elementX, elementY], () => {
+  if(isOutside.value)return
+  //逻辑判断1(指针位于中心范围内)，【100,300】,left/top - 100
+  if(elementX.value > 100 && elementX.value < 300) { left.value = elementX.value - 100}
+  if(elementY.value > 100 && elementY.value < 300) { top.value = elementY.value - 100}
+  //逻辑判断2(指针位于边缘范围内,inoutside), 【0,100】||【300，,400】 取边界
+  if(elementX.value < 100) {left.value = 0}
+  if(elementX.value > 300) {left.value = 200}
+  if(elementY.value < 100) {top.value = 0}
+  if(elementY.value > 300) {top.value = 200}  
+
+  //放大镜，放大取反
+  positionX.value = -elementX.value * 2
+  positionY.value = -elementY.value * 2
+})
 
 
 </script>
@@ -98,6 +112,9 @@ watch(/* 请实现：监听 elementX 和 elementY */)
         ]"></div>
     </div>
 </template>
+
+
+
 
 <style scoped lang="scss">
 .goods-image {

@@ -50,6 +50,7 @@ const addCart = () => {
     ElMessage.warning('请选择规格')
   }
  }
+ 
 </script>
 
 <template>
