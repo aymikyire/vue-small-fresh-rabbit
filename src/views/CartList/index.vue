@@ -11,7 +11,7 @@ const singleCheck = (i, selected) => {
 }
 const carStore = useCartStore()
 const allCheck = (selected) => {
-    carStore.allCheck(selected)
+    carStore.checkAllCart(selected)
 }
 </script>
 
@@ -41,7 +41,7 @@ const allCheck = (selected) => {
             </td>
               <td>
                 <div class="goods">
-                  <RouterLink to="/"><img :src="i.picture" alt="" /></RouterLink>
+                  <RouterLink to="/"><img :src="i.pictures" alt="" /></RouterLink>
                   <div>
                     <p class="name ellipsis">22
                       {{ i.name }}
@@ -81,7 +81,7 @@ const allCheck = (selected) => {
 
         </table>
       </div>
-      <!-- 操作栏 -->
+    <!-- 操作栏 -->
       <div class="action">
         <div class="batch">
           共 {{ carStore.allCount }} 件商品，已选择 {{ carStore.selectedCount }} 件，商品合计：
