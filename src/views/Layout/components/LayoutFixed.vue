@@ -1,15 +1,17 @@
 <script setup>
 // vueUse
 import { useScroll } from '@vueuse/core'
-import { useCategoryStore } from '@/stores/layoutStore'
-
+import { useCategoryStore } from '@/stores/layoutStore.js'
 const categoryStore = useCategoryStore()
-
 const { y } = useScroll(window)
+
+
 </script>
 
 <template>
   <div class="app-header-sticky" :class="{show: y > 78}" >
+    <!-- <div class="app-header-sticky" :class="{show: true}" > -->
+
     <!-- <p>{{ y }}</p> -->
     <div class="container">
       <RouterLink class="logo" to="/" />

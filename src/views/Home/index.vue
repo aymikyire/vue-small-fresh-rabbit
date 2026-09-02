@@ -14,13 +14,16 @@ const getBanner = async () => {
     bannerList.value=res.result
 }
 
-onMounted(()=>getBanner())
+onMounted(() => {
+  getBanner()
+  console.log(111);
+})
 </script>
 
 <template>
   <div class="container">
     <HomeCategory />
-    <HomeBanner />
+    <HomeBanner :banner-list="bannerList"/>
   </div>
   <HomeNew />
   <HomeHot />
