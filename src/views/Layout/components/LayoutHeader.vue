@@ -3,6 +3,7 @@ import HeaderCart from './HeaderCart.vue';
 import { useCategoryStore } from '@/stores/layoutStore.js';
 
 const categoryStore = useCategoryStore(); 
+console.log(`use head successfully:${categoryStore.categoryList}`);
 
 </script>
 

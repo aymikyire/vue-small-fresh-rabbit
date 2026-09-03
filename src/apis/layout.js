@@ -23,9 +23,10 @@ import httpInstance from "@/utils/http";
  *   const res = await getCategoryAPI();
  *   console.log(res.data); // 分类列表数组
  */
-export function getCategoryAPI() {
+
+export const getCategoryAPI = () => {
   return httpInstance({
-    method:"get",
-    url: "home/category/head",
+    method: "GET",
+    url:"/home/category/head"
   });
 }
