@@ -1,13 +1,5 @@
 <script setup >
-// import { onMounted } from "vue"
-// import HomePanel from "./HomePanel.vue"
-// import { userNew } from "@/stores/home"
-// const store = userNew()
-// onMounted(async () => {
-//   await store.getNew()
-//   console.log(store.newList)
-// })
-import HomePanel from './HomePanel.vue';
+import HomePanel from './HomePanel.vue'
 import {findNewAPI} from '@/apis/home.js'
 import { onMounted,ref } from 'vue';
 //获取数据
@@ -33,7 +25,6 @@ onMounted(() => getNewList())
         </li>
       </ul>
     </HomePanel>
-
 </template>
 
 

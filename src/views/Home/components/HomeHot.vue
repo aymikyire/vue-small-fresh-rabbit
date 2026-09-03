@@ -1,13 +1,6 @@
 <script setup >
-// import { onMounted } from "vue"
-// import HomePanel from "./HomePanel.vue"
-// import { userNew } from "@/stores/home"
-// const store = userNew()
-// onMounted(async () => {
-//   await store.getNew()
-//   console.log(store.newList)
-// })
-import HomePanel from './HomePanel.vue';
+
+import HomePanel from './HomePanel.vue'
 import {findHotAPI} from '@/apis/home.js'
 import { onMounted,ref } from 'vue';
 //获取数据
@@ -22,7 +15,7 @@ onMounted(() => getHotList())
 </script>
 
 <template>
-    <HomePanel title="人气推荐" sub-title="人气推荐 好多商品">
+    <HomePanel title="人气推荐" sub-title="人气爆款 不容错过">
         <ul class="goods-list">
         <li v-for="item in hotList" :key="item.id">
           <RouterLink to="/">
@@ -33,17 +26,6 @@ onMounted(() => getHotList())
         </li>
       </ul>
     </HomePanel>
-  <!-- <HomePanel title="新鲜好物" sub-title="新鲜出炉 品质保障">
-      <ul class="goods-list">
-        <li v-for="item in store.newList?.result" :key="item.id">
-          <RouterLink to="/">
-            <img v-img-lazy="item.picture" alt="" />
-            <p class="name">{{ item.name }}</p>
-            <p class="price">&yen;{{ item.price }}</p>
-          </RouterLink>
-        </li>
-      </ul>
-  </HomePanel> -->
 </template>
 
 

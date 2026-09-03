@@ -14,7 +14,6 @@
             <div class="head">
                 <!-- 主标题和副标题 -->
                 <h3>
-                <!-- {{ title }}<small>{{ subTitle }}</small> -->
                   {{ title }}<small>{{ subTitle }}</small>
                 </h3>
             </div>
@@ -43,13 +42,9 @@
 //   })
 // ============================================================
 defineProps({
-    title: {type: String},
-    subTitle: {type : String}
+    title: { type: String},
+    subTitle: { type: String}
 })
-// defineProps({
-//     title:{type: String},
-//     subTitle:{type: String}
-// })
 // ============================================================
 // TODO ②: 本组件没有其他逻辑，思考：父组件如何向此组件传内容？
 // ------------------------------------------------------------
